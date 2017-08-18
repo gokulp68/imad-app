@@ -5,24 +5,59 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var ArticleOne = {
-  title: 'Article One',
-  heading: 'Article one',
-  date: 'august 16 2017',
-  content:` <div>
-                <p>
-                    jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                    dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
-                </p>
-            </div>
-            <div>
-                <p>
-                    jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                    dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
-                </p>
-            </div>`
+var articles = {
+     'articl-one' : {
+              title: 'Article One',
+              heading: 'Article one',
+              date: 'august 16 2017',
+              content:` <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>`
+            },
+    ' ariticle-two' :{title: 'Article Two',
+              heading: 'Article Two',
+              date: 'august 16 2017',
+              content:` <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>`},
+    'article-three' :{
+        title: 'Article three',
+              heading: 'Article three',
+              date: 'august 16 2017',
+              content:` <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                            </p>
+                        </div>`
+    }
+    
+    
 };
-
 function createhtml(data){
         var title=data.title;
         var heading=data.heading;
@@ -57,7 +92,6 @@ function createhtml(data){
         return htmltemplate;
     
 }
-
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -70,17 +104,11 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article-one',function (req, res){
-  res.send(createhtml(ArticleOne));
+app.get('/:articleName',function (req, res){
+  res.send(createhtml(articles[articleName]));
 });
 
-app.get('/article-two',function (req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
 
-app.get('/article-three',function (req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
 
