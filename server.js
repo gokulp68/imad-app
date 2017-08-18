@@ -7,10 +7,10 @@ app.use(morgan('combined'));
 
 var articles = {
     'articl-one' : {
-              title: 'Article One',
-              heading: 'Article one',
-              date: 'august 16 2017',
-              content:` <div>
+              title : 'Article One',
+              heading : 'Article one',
+              date : 'august 16 2017',
+              content :` <div>
                             <p>
                                 jhfhklsdufbhhhsdilaufklasvnklagiuegh
                                 dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
