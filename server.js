@@ -5,6 +5,59 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var ArticleOne = {
+  title: 'Article One',
+  heading: 'Article one',
+  date: 'august 16 2017',
+  content:` <div>
+                <p>
+                    jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                    dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                </p>
+            </div>
+            <div>
+                <p>
+                    jhfhklsdufbhhhsdilaufklasvnklagiuegh
+                    dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                </p>
+            </div>`
+};
+
+function createhtml(data){
+        var title=data.title;
+        var heading=data.heading;
+        var date=data.date;
+        var content=data.content;
+        var htmltemplate = `
+                 <html>
+                    <head>
+                        <title>
+                            ${title}
+                        </title>
+                        <meta name="viewport" content="width=device-width, initial-scale=1" />
+                         <link href="/ui/style.css" rel="stylesheet" />
+                    </head>
+                    <body>
+                    <div class="container">
+                        <div>
+                            <a href="/">Head back</a>
+                        </div>
+                        <hr/>
+                        <h3>
+                            ${heading}
+                        </h3>
+                        <div>
+                            ${date}
+                        </div>
+                            ${content}
+                     </div>
+                    </body>
+                </html>
+        `;
+        return htmltemplate;
+    
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -18,7 +71,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article-one',function (req, res){
-  res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+  res.send(createhtml(ArticleOne));
 });
 
 app.get('/article-two',function (req, res){
