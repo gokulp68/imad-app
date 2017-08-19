@@ -6,57 +6,37 @@ var app = express();
 app.use(morgan('combined'));
 
 var articles = {
-    'articl-one' : {
+    'article-one' : {
               title : 'Article One',
               heading : 'Article one',
               date : 'august 16 2017',
               content :` <div>
                             <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                             content for article one
                             </p>
                         </div>`
             },
-    'ariticle-two' :{title: 'Article Two',
-              heading: 'Article Two',
-              date: 'august 16 2017',
-              content:` <div>
+    'ariticle-two' :{
+                title: 'Article Two',
+                heading: 'Article Two',
+                date: 'august 16 2017',
+                content:` <div>
                             <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                               content for article two
                             </p>
                         </div>`},
     'article-three' :{
-        title: 'Article three',
-              heading: 'Article three',
-              date: 'august 16 2017',
-              content:` <div>
+                title: 'Article three',
+                heading: 'Article three',
+                date: 'august 16 2017',
+                content:` <div>
                             <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
-                            </p>
-                        </div>
-                        <div>
-                            <p>
-                                jhfhklsdufbhhhsdilaufklasvnklagiuegh
-                                dnvkladjfgnjkladgvbiladugvvvvvbkddddddddddbndksfb          jhbvjsdfyhgjiu bieurh iuuih
+                               content for article three
                             </p>
                         </div>`
     }
 };
-function createhtml(data){
+function createTemplate (data){
         var title = data.title;
         var heading = data.heading;
         var date = data.date;
@@ -106,7 +86,7 @@ app.get('/ui/madi.png', function (req, res) {
 
 app.get('/:articleName',function (req, res){
     var articleName = req.params.articleName;
-    res.send(createhtml(articles[articleName]));
+    res.send(createTemplate(articles[articleName]));
 });
 
 
