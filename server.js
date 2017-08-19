@@ -16,7 +16,7 @@ var articles = {
                             </p>
                         </div>`
             },
-    'ariticle-two' :{
+    'article-two' :{
                 title: 'Article Two',
                 heading: 'Article Two',
                 date: 'august 16 2017',
